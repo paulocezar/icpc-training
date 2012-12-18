@@ -1,0 +1,316 @@
+%% formatação saída C++
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NOCOES DE COMPLEXIDADE -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Importância}
+Além de dominar as diferentes técnicas  de solução de problemas, também é importante saber analisar a complexidade da sua solução.
+\begin{itemize}
+	\item[$\blacksquare$] Ninguém gosta de receber um \emph{Time Limit Exceeded}.
+\end{itemize}
+\end{block}
+
+\begin{block}{}
+\begin{table}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+        \hline
+        Tamanho da entrada  & 10    & 20    & 50    & 100   & 1000   & 5000	\\ \hline
+        algoritmo 1         & 0.00s & 0.01s & 0.05s & 0.47s & 23.92s & 47min	\\ \hline
+        algoritmo 2         & 0.05s & 0.05s & 0.06s & 0.11s & 0.78s  & 14.22s	\\  \hline
+    \end{tabular}
+    \caption{Tempos de execução de dois algoritmos fictícios}
+\end{table}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{}
+\begin{itemize}
+	\item[] A solução de um problema deve ser eficiente.
+	\item[] Dois possíveis jeitos de analisar a eficiência da sua solução:
+	\begin{itemize}
+		\bitem Implementar e executar medindo o tempo gasto (ou submeter e torcer pra não receber TLE).
+		\item[\checkmark] Pensar no algoritmo e analisar o mesmo antes de começar a codificar.
+	\end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{}
+Durante uma competição sabe-se os possíveis tamanhos da entrada. Supondo que um algoritmo foi pensado, algumas perguntas geralmente devem ser respondidas.
+\begin{itemize}
+	\bitem Vale a pena implementar essa solução? Ela vai resolver o maior caso em tempo?
+	\bitem Sei mais de um algoritmo pra resolver um problema, qual devo implementar?
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Certo, é importante. Mas como analisar a complexidade?}
+\begin{itemize}
+	\bitem Dois tipos de medida:
+	\begin{itemize}
+		\bitem Complexidade de Tempo -- nro. de operações executadas pelo algoritmo
+		\bitem Complexidade de Espaço -- quantidade de memória que o algoritmo usa durante a execução 
+	\end{itemize}
+	\bitem Foco na análise da Complexidade de Tempo.
+	\begin{itemize}
+	\tiny
+		\bitem Geralmente se o algoritmo tem uma boa complexidade de tempo, ele também tem uma boa complexidade de espaço.
+		\bitem Costuma ser mais fácil estimar o espaço gasto.
+	\end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Casos a serem levados em consideração}
+\begin{itemize}
+	\bitem Melhor caso
+	\bitem Caso médio  
+	\item[\checkmark]  Pior Caso
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Análise assimptótica}
+\begin{itemize}
+	\bitem Considere o nro. de operações de cada um dos dois algoritmos fictícios que resolvem o mesmo problema uma função de $n$ (o ``tamanho'' da entrada)
+	\begin{itemize}
+		\bitem Algoritmo 1: $f_1(n) = 42n^2 + 13n$ operações
+		\bitem Algoritmo 2: $f_2(n) = 1337n + 666$ operações
+	\end{itemize}
+	\bitem Dependendo do valor de $n$ o Algoritmo 1 pode requerer mais ou menos operações que o Algoritmo 2.
+	\bitem Um caso de particular interesse é quando $n$ tem valor muito grande ($n \rightarrow \infty$), denominado comportamento assimptótico.
+	\bitem Os termos inferiores e as constantes multiplicativas contribuem pouco na comparação e podem ser descartados.
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Notação $O$}
+\begin{itemize}
+	\item[] Dada uma função $g(n)$, denotamos por $O(g(n))$ o conjunto das funções\\
+		\begin{center}$\{f(n) : \exists$ constantes $c_1\ e\ n_0$ tais que $0 \leq f(n) \leq c_1g(n)$ para $n \geq n_0\}$\end{center}
+
+	\item[] Isto é, para valores de $n$ suficientemente grandes, $f(n)$ é menor ou igual a $g(n)$.
+	
+	\begin{itemize}
+		\bitem Algoritmo 1: $f_1(n) = 42n^2 + 13n \in O(n^2)$
+		\bitem Algoritmo 2: $f_2(n) = 1337n + 666 \in O(n)$
+	\end{itemize}
+	
+	\item[] Um polinômio de grau $d$ é de ordem $O(n^d)$. Como uma constante é considerada um polinômio de grau 0, dizemos que uma constante é $O(n^0)$, ou seja, $O(1)$.
+
+	\begin{itemize}
+	\tiny	
+	\item[$\dagger$] $O(n) \times O(n) = O(n^2)$
+	\item[$\dagger$] $O(n) + O(n) = O(n)$
+	\item[$\dagger$] $O(n) + O(n^2) = O(n^2)$
+	\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+\begin{block}{Exemplo: Selection Sort}
+
+\begin{itemize}
+	\item[] Para cada posição $i$ com $i$ variando de $0$ até $n-2$ \uncover<4->{$O(n)$}
+	\begin{itemize}
+		\item[] Encontre a posição $j$, ($i \leq j < n$) onde está o menor elemento. \uncover<3->{$O(n)$}
+		\item[] Troque os valores das posições $i$ e $j$. \uncover<2->{$O(1)$}
+	\end{itemize}
+	\item[]<5-> $O(n) * (O(n) + O(1)) = O(n) * O(n) = O(n^2)$
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Sequência de Fibonacci}
+\begin{center}\textbf{1, 1, 2, 3, 5, 8, 13, 21, 34, ...}\end{center}
+\begin{itemize}
+	\item[] A sequência pode ser definida pela seguinte recorrência:
+	\item[] $$F_n = \begin{cases}
+					1&\text{se } n=1\\
+					1&\text{se } n=2\\
+					F_{n-1}+F_{n-2}&\text{se } n>2
+				\end{cases}$$
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Sequência de Fibonacci - Algoritmo 1}
+\includefile{c++}{codes}{fib1.cpp}
+\end{block}
+
+\begin{block}{Exemplo: Sequência de Fibonacci - Algoritmo 2}
+\includefile{c++}{codes}{fib2.cpp}
+\end{block}
+\end{frame}
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Sequência de Fibonacci - Algoritmo 1}
+\includefile{c++}{codes}{fib1.cpp}
+\end{block}
+
+\begin{block}{Qual a complexidade?}
+\begin{itemize}
+	\bitem Inicialmente pode parecer que o número de operações dessa solução é constante, afinal no pior caso será feita uma verificação e uma soma.
+	\bitem Mas, não podemos esquecer que essa é uma função recursiva, então esse número constante de operações será executado em cada chamada da função recursiva.
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Sequência de Fibonacci - Algoritmo 1}
+\includefile{c++}{codes}{fib1.cpp}
+\end{block}
+\begin{block}{Qual a complexidade?}
+\begin{itemize}
+	\bitem E como saber quantas chamadas serão feitas numa função?
+	\begin{itemize}
+		\bitem $O(x)$ possíveis valores para o parâmetro $y$ da função, 
+		\bitem $b$ possíveis escolhas em cada chamada (fator de ramificação)
+		\bitem $b^{O(x)}$ chamadas no pior caso
+	\end{itemize}
+	\bitem Para a solução em questão temos $O(2^n)$ possíveis chamadas com um custo $O(1)$
+	\bitem Complexidade da solução: $O(2^n)$
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Sequência de Fibonacci - Algoritmo 2}
+\includefile{c++}{codes}{fib2.cpp}
+\end{block}
+
+\begin{block}{Qual a complexidade?}
+$O(1)$ operações (\tiny \texttt{f[i] = f[i-1] + f[i-2];}\normalsize) sendo executadas $O(n)$ vezes.\\
+Complexidade da solução: $O(n)$
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Sequência de Fibonacci - Algoritmo 2}
+\includefile{c++}{codes}{fib2.cpp}
+\end{block}
+
+\begin{block}{Qual a complexidade?}
+E a complexidade de espaço?
+\begin{itemize}
+	\item[]<2-> $O(n)$
+	\item[]<3-> Será que dá pra fazer melhor?
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Sequência de Fibonacci - Uma terceira solução}
+\includefile{c++}{codes}{fib3.cpp}
+\end{block}
+
+\begin{block}{Qual a complexidade?}
+\begin{itemize}
+	\item[] Complexidade de Tempo: $O(n)$
+	\item[] Complexidade de Espaço: $O(1)$
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Busca num vetor ordenado}
+Problema: Dado um vetor de $n$ inteiros distintos, com os elementos em ordem crescente,
+encontrar a posição onde está o valor $x$, ou informar que o mesmo não existe no vetor.\\
+\end{block}
+\pause
+\begin{block}{Solução 1:}
+\begin{itemize}
+	\item[] Percorre o vetor comparando elemento por elemento até encontrar $x$
+	\item[] Se olhou todos os elementos e não encontrou, $x$ não está presente.\\
+
+	\bitem<3-> No pior caso todos os $n$ elementos são comparados
+	\bitem<3-> $O(n)$
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Noções de Complexidade}
+
+\begin{block}{Exemplo: Busca num vetor ordenado}
+Problema: Dado um vetor de $n$ inteiros distintos, com os elementos em ordem crescente,
+encontrar a posição onde está o valor $x$, ou informar que o mesmo não existe no vetor.\\
+\end{block}
+\begin{block}{Solução 2:}
+Mas o vetor está ordenado, será que isso não ajuda?
+\uncover<2->
+{
+\begin{itemize}
+\tiny
+	\item[] Inicialmente procuramos nas posições \texttt{inicio = 0, fim = n-1}
+	\item[] enquanto inicio <= fim
+	\begin{itemize}
+\tiny
+		\item[] \texttt{meio = (inicio+fim)/2}
+		\item[] se \texttt{array[ meio ] < x}, \texttt{inicio = meio + 1;}
+		\item[] se \texttt{array[ meio ] > x,} \texttt{fim = meio - 1;}
+		\item[] se \texttt{array[ meio ] == x}, Encontrou $x$ na posição 'meio' 
+	\end{itemize}
+	\item[] $x$ não está presente no vetor
+\normalsize
+	\bitem<3-> Como a faixa onde estamos buscando o valor vai ser sempre dividida ao meio, no máximo $O(log_2\ n)$ faixas são verificadas.
+	\bitem<3-> Complexidade da solução: $O(log\ n)$
+\end{itemize}
+}
+\end{block}
+
+\end{frame}
+
+
+
+

@@ -1,0 +1,103 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+%------------------------------------------------------------------- PACKAGES -
+\usepackage[brazil]{babel}     %permite acentuação automática para o Portugues do Brasil,
+\usepackage[T1]{fontenc}       %permite a hifenização correta em Portugues
+\usepackage[utf8]{inputenc}  %permite a inserção de acentos (Windows)
+\usepackage{colortbl}
+\usepackage{multicol}
+
+\usepackage{color}
+\definecolor{cstrings}{rgb}{0.6,0,0}
+\definecolor{ccomments}{rgb}{0.25,0.5,0.35}
+\definecolor{ckeywords}{rgb}{0.25,0.35,0.75}
+
+\usepackage{listings}
+\lstset{language=C++,
+basicstyle=\scriptsize\ttfamily,
+keywordstyle=\color{ckeywords}\bfseries,
+stringstyle=\color{cstrings},
+commentstyle=\color{ccomments},
+columns=fullflexible,}
+
+%\includefile{c++}{pasta}{arquivo}
+\newcommand\includefile[3]{\lstinputlisting[language=#1]{#2/#3}}
+
+
+%---------------------------------------------------------------- DEFINITIONS -
+%
+%\def\dis{\displaystyle}
+%\def\ol{\overline}
+%\newcommand{\ang}[1]{\left\langle #1 \right\rangle}
+%\newcommand{\transp}[2]{\input{#1#2}}
+%
+%\FontTitle{\large}{BW}
+%FontTitle{\large}
+%\hypersetup{pdfpagemode=FullScreen}
+
+
+%---------------------------------------------------------------------- COVER -
+\title[Treinos Livres]{Treinos Livres\\ Maratona de Programação}
+\author[{\tiny André, Humberto, Paulo Cezar}]{André Augusto\\ Humberto Longo\\ Paulo Cezar Pereira Costa }
+\institute[]{Instituto de Informática\\
+           Universidade Federal de Goiás}
+%\date[]{}
+
+\newcommand{\bitem}{\item[\textbullet]}
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\frametitle{}
+\begin{center}
+	\begin{minipage}{.9\textwidth}
+	\begin{block}{}
+		\centering
+		\large
+		\tt
+		{\usebeamercolor[bg]{block title} \insertsection}
+	\end{block}
+	\end{minipage}
+\end{center}
+\end{frame}
+}
+\AtBeginSubsection[]
+{
+\begin{frame}<beamer>
+\frametitle{}
+\begin{center}
+	\begin{minipage}{.9\textwidth}
+	\begin{block}{}
+		\centering
+		\huge
+		\tt
+		{\usebeamercolor[bg]{block title} \insertsubsection}
+	\end{block}
+	\end{minipage}
+\end{center}
+\end{frame}
+}
+
+
+\begin{document}
+
+\maketitle
+
+% ----------------------------------------------------------------------- AULA 2 ----------
+%\section{Aula 2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  Noções de Complexidade, Problemas Ad Hoc e Estruturas de Dados}
+%\subsection{Noções de Complexidade}
+%\include{aula2-complex}
+%\subsection{Problemas Ad Hoc}
+%\include{aula2-adhoc}
+%\subsection{Estruturas de Dados Básicas}
+%\include{aula2-edbasicas}
+
+% ----------------------------------------------------------------------- AULA 3 ----------
+\section{Aula 3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  Estruturas de Dados (Continuação)}
+
+\subsection{BitMask + BitSet}
+\include{aula3-bitmaskset}
+
+\end{document}
+

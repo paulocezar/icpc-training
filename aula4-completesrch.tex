@@ -11,7 +11,7 @@
 	\begin{itemize}
 		\bitem Não importa se existe ou não uma solução mais eficiente.
 	\end{itemize}
-	\bitem A busca completa faz uso do método trivial, de força bruta, todas as possíveis soluções são analisadas para encontrar a resposta.
+	\bitem A busca exaustiva faz uso do método trivial, de força bruta, todas as possíveis soluções são analisadas para encontrar a resposta.
 	\bitem Essa técnica sempre deve ser a primeira a ser considerada.
 	\begin{itemize}
 		\bitem Caso funcione dentro do limite de tempo / memória, use-a! 
@@ -26,7 +26,7 @@
 \pause
 
 \begin{block}{\tiny Cuidado}
-Nem sempre é óbvio que a busca completa pode ser usada.
+Nem sempre é óbvio que a busca exaustiva pode ser usada.
 \end{block}
 \end{frame}
 
@@ -61,20 +61,45 @@ Caso exista um caso onde ela não é rápida o suficiente, mantenha a solução 
 \end{frame}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
-%    - Filtrar vs. Gerar    
-%    - busca em largura vs. busca em profundidade
+\begin{frame}
+\frametitle{Complete Search}
+\begin{block}{Filtrar vs. Gerar }
+Duas possíveis abordagens podem ser escolhidas quando fazendo uma busca exaustiva:
+\begin{itemize}
+	\bitem Filtragem -- ...
+	\bitem Geração -- ...
+\end{itemize}
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Complete Search}
+\begin{block}{Busca em largura }
+\end{block}
+
+\begin{block}{Busca em profundidade}
+\end{block}
+\end{frame}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 %    Selecionar alguns problemas para discutir ...
 
+
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
-%Dicas:
-%    - Podar o quanto antes
-%    - Aproveitar simetrias
-%    - Pré-cálculo
-%    - inverter o problema (?)
-%    - usar um algoritmo/estrutura de dados melhor
-%    - Otimizar código
+\begin{frame}
+\frametitle{Complete Search}
+\begin{block}{Dicas}
+\begin{itemize}[<+->]
+	\bitem Podar o quanto antes
+	\bitem Aproveitar simetrias
+	\bitem Pré-cálculo
+%	\bitem Inverter o problema (?)
+	\bitem Otimizar código
+	\bitem Usar um algoritmo/estrutura de dados melhor
+\end{itemize}
+\end{block}
+\end{frame}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
@@ -82,7 +107,7 @@ Caso exista um caso onde ela não é rápida o suficiente, mantenha a solução 
 
 \begin{block}{}
 \begin{itemize}
-\tiny
+\scriptsize
 	\bitem \url{http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=recursionPt1}
 	\bitem \url{http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=recursionPt2}
 	\bitem \url{http://www.inf.ufg.br/~paulocosta/tap/material/bt1.pdf}

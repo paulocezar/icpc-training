@@ -1,7 +1,95 @@
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
-\frametitle{}
+\frametitle{Complete Search}
 \begin{block}{}
-    
+\begin{itemize}
+	\bitem Estratégia baseada no princípio KISS (``Keep It Simple, Stupid'')
+	\begin{itemize}
+		\bitem Buscar os resultados evitando qualquer complexidade desnecessária.
+	\end{itemize}
+	\bitem O objetivo numa competição de programação é escrever um programa que resolva o problema dentro do tempo limite.
+	\begin{itemize}
+		\bitem Não importa se existe ou não uma solução mais eficiente.
+	\end{itemize}
+	\bitem A busca completa faz uso do método trivial, de força bruta, todas as possíveis soluções são analisadas para encontrar a resposta.
+	\bitem Essa técnica sempre deve ser a primeira a ser considerada.
+	\begin{itemize}
+		\bitem Caso funcione dentro do limite de tempo / memória, use-a! 
+		\begin{itemize}
+			\bitem Geralmente é fácil de codificar e debugar.
+%			\bitem Mais tempo para trabalhar nos problemas difíceis. 
+		\end{itemize}
+	\end{itemize}
+	\bitem Apenas alguns milhões de possíveis respostas para um problema? Itere em todas elas e encontre aquela que funciona.
+\end{itemize}
 \end{block}
+\pause
+
+\begin{block}{\tiny Cuidado}
+Nem sempre é óbvio que a busca completa pode ser usada.
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Complete Search}
+
+\begin{block}{}
+\begin{itemize}
+	\bitem Uma das técnicas de resolução de problemas mais importantes;
+	\begin{itemize}
+		\bitem Pode ser aplicada a uma grande gama de problemas quando as instâncias são pequenas os suficiente
+		\bitem Ponto de partida para o desenvolvimento de outros algoritmos.
+	\end{itemize}
+	\bitem Competidor precisa saber:
+	\begin{itemize}
+		\bitem Gerar/testar: subconjuntos, permutações, ...
+		\bitem Técnicas para reduzir o espaço de busca
+		\bitem Estimar a complexidade no pior caso
+	\end{itemize}
+	\bitem Ajustes no código podem influenciar bastante no tempo de execução;
+	\begin{itemize}
+		\bitem Vale a pena implementar a mesma solução de formas diferentes.
+	\end{itemize}
+\end{itemize}	
+\end{block}
+
+\begin{block}{\tiny \#protip}
+Quando não conseguir pensar em um jeito melhor de resolver o problema arrisque a solução por força bruta.
+Caso exista um caso onde ela não é rápida o suficiente, mantenha a solução por perto e use-a para testar outras soluções nos casos menores.
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+%    - Filtrar vs. Gerar    
+%    - busca em largura vs. busca em profundidade
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+%    Selecionar alguns problemas para discutir ...
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+%Dicas:
+%    - Podar o quanto antes
+%    - Aproveitar simetrias
+%    - Pré-cálculo
+%    - inverter o problema (?)
+%    - usar um algoritmo/estrutura de dados melhor
+%    - Otimizar código
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Leituras Recomendadas}
+
+\begin{block}{}
+\begin{itemize}
+\tiny
+	\bitem \url{http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=recursionPt1}
+	\bitem \url{http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=recursionPt2}
+	\bitem \url{http://www.inf.ufg.br/~paulocosta/tap/material/bt1.pdf}
+	\bitem \url{http://www.inf.ufg.br/~paulocosta/tap/material/bt2.pdf}
+%	\bitem \url{http://www.inf.ufg.br/~paulocosta/tap/material/bt3.pdf} % MITM
+	\bitem \url{http://www.comp.nus.edu.sg/~stevenha/visualization/recursion.html}
+\end{itemize}
+\end{block}
+
 \end{frame}

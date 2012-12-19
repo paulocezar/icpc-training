@@ -25,7 +25,7 @@
 \end{block}
 \pause
 
-\begin{block}{\tiny Cuidado}
+\begin{block}{\tiny Cuidado!!}
 Nem sempre é óbvio que a busca exaustiva pode ser usada.
 \end{block}
 \end{frame}
@@ -85,7 +85,7 @@ Duas possíveis abordagens podem ser escolhidas quando fazendo uma busca exausti
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
-% figura mostrando uma árvore..
+% TODO figura mostrando uma árvore..
 \huge FIGURA ILUSTRANDO ARVORE
 \end{frame}
 
@@ -172,7 +172,7 @@ Colocar $n$ rainhas em um tabuleiro de xadrez $n\ x\ n$ de modo que uma rainha n
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
-% figura ilustrando a busca em profundidade 
+% TODO figura ilustrando a busca em profundidade 
 \huge FIGURA DFS
 \end{frame}
 
@@ -230,7 +230,7 @@ Colocar o menor número de cavalos em um tabuleiro de xadrez $n\ x \ n$ de modo 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
-% figura ilustrando a busca em largura
+% TODO figura ilustrando a busca em largura
 \huge FIGURA BFS
 \end{frame}
 
@@ -243,7 +243,7 @@ Colocar o menor número de cavalos em um tabuleiro de xadrez $n\ x \ n$ de modo 
 	\bitem Primeiro visita a raiz, então todos os nós no nível 1, depois todos no nível 2, ...
 \end{itemize}
 \end{block}
-
+\pause
 \begin{block}{Busca em largura -- Complexidade}
 \begin{itemize}
 	\bitem Complexidade de tempo é a mesma da busca em profundidade.
@@ -259,17 +259,63 @@ Colocar o menor número de cavalos em um tabuleiro de xadrez $n\ x \ n$ de modo 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
-% DFS com ``aprofundamento iterativo''
-\huge DFS + ID
+\begin{block}{Busca em aprofundamento iterativo}
+\begin{itemize}	\bitem \emph{Depth First with Iterative Deepening} (ID)
+	\bitem Alternativa a busca em largura
+	\bitem São executadas sequencialmente $D$ buscas em profundidade
+	\bitem Cada busca pode ir um nível além da busca anterior
+	\bitem Simula uma busca em largura, complexidade de tempo pior mas gasta menos espaço
+\end{itemize}
+\end{block}
 \end{frame}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
-% Comparar buscas
-\huge COMPARATIVO
+\begin{block}{Busca em aprofundamento iterativo}
+\includefile{c++}{codes}{pseudoid.cpp}
+\end{block}
 \end{frame}
 
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Complete Search}
+\begin{block}{Busca em aprofundamento iterativo -- Complexidade}
+
+\begin{itemize}
+	\bitem Complexidade de espaço é a mesma da busca em profundidade;
+	\bitem Complexidade de tempo pior:
+	\begin{itemize}
+		\bitem Busca em profundidade parando na profundidade $k$ leva $O(c^k)$
+		\bitem Seja $d$ o número máximo de decisões (profundidade máxima), o tempo gasto será $c^0 + c^1 + c^2 + c^3 + ... + c^d$
+	\end{itemize}
+	\bitem Sempre que há pelo menos duas escolhas a serem tomadas, a busca em aprofundamento iterativo
+	não gasta mais que o dobro de tempo que a busca em largura teria gasto.
+\end{itemize}	
+
+\end{block}
+\end{frame}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
+\begin{frame}
+\frametitle{Complete Search}
+\begin{block}{Quando usar?}
+\begin{table}
+    \begin{tabular}{|p{2.5cm}|l|l|p{5cm}|}
+        \hline
+        Busca                    & Tempo    & Espaço    & Quando usar                                                                                                                \\ \hline
+        Profundidade             & $O(c^k)$ & $O(k)$    & De qualquer maneira vai olhar todos os estados, sabe o nível que a resposta está, ou não está procurando a menor resposta. \\ \hline
+        Largura                  & $O(c^d)$ & $O(c^d)$  & Sabe que a resposta fica perto do topo da árvore, ou está procurando a menor resposta.                                     \\ \hline
+        Aprofundamento Iterativo & $O(c^d)$ & $O(d)$    & Quer fazer uma busca em largura, não tem espaço, pode gastar um pouco mais de tempo.                                       \\
+        \hline
+    \end{tabular}
+\end{table}
+\end{block}
+\end{frame}
+
+\subsection{Hora de resolver alguns problemas..}
+
+% TODO ...
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}

@@ -329,46 +329,50 @@ Colocar o menor número de cavalos em um tabuleiro de xadrez $n\ x \ n$ de modo 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
+\scriptsize
 \begin{block}{The Clocks [IOI 94]}
 \begin{itemize}
 	\bitem Existem 9 relógios em um \emph{grid} $3\ x\ 3$; que podem estar mostrando um dos seguintes horários: 12:00, 3:00, 6:00 ou 9:00.
 	\bitem Objetivo: Fazer com que todos mostrem 12:00.
 	\bitem 9 comandos podem ser usados para manipular os relógios
 	\begin{itemize}
-		\bitem Cada comando rotaciona um subconjunto de relógios 90 graus no sentido horário. 
+		\bitem \scriptsize Cada comando rotaciona um subconjunto de relógios 90 graus no sentido horário. 
 	\end{itemize}
 	\bitem Qual a menor sequência de comandos que faz com que todos os relógios mostrem 12:00.
 \end{itemize}
 \end{block}
 \pause
 \begin{block}{}
-\begin{itemize}
-	\bitem Solução mais óbvia: fazer movimentos 
-	\bitem 
+\begin{itemize}[<+->]
+	\bitem Abordagem 1 -- incrementar a quantidade de movimentos que podem ser usados e tentar encontrar uma sequência com essa quantidade de movimentos recursivamente.
+	\begin{itemize}
+		\bitem \scriptsize Pior caso: $O(9^k)$, onde $k$ é o menor nro. de movimentos necessário.
+	\end{itemize}
+	\bitem \texttt{$obs_1$: ordem dos movimentos não importa}
+	\bitem Abordagem 2 -- para cada movimento, variar a quantidade de vezes que ele será realizado.
+	\begin{itemize}
+		\bitem \scriptsize Complexidade: $O(k^9)$
+	\end{itemize}
+	\bitem \texttt{$obs_2$: fazer um movimento 4 vezes é o mesmo que não fazer nenhuma}
+	\bitem Basta testar $4^9 = 262144$ possibilidades!
 \end{itemize}
 \end{block}
-
-%A group of nine clocks inhabits a 3 x 3 grid; each is set to 12:00, 3:00, 6:00, or 9:00. Your goal is to manipulate them all to read 12:00. Unfortunately, the only way you can manipulate the clocks is by one of nine different types of move, each one of which rotates a certain subset of the clocks 90 degrees clockwise.
-%
-%Find the shortest sequence of moves which returns all the clocks to 12:00.
-%
-%The ``obvious'' thing to do is a recursive solution, which checks to see if there is a solution of 1 move, 2 moves, etc. until it finds a solution. This would take 9k time, where k is the number of moves. Since k might be fairly large, this is not going to run with reasonable time constraints.
-%
-%Note that the order of the moves does not matter. This reduces the time down to k9 , which isn't enough of an improvement.
-%
-%However, since doing each move 4 times is the same as doing it no times, you know that no move will be done more than 3 times. Thus, there are only 49 possibilities, which is only 262,072, which, given the rule of thumb for run-time of more than 10,000,000 operations in a second, should work in time. The brute-force solution, given this insight, is perfectly adequate.
 \end{frame}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
 \begin{block}{UVa 725 -- Division}
-%	Encontrar dois numeros de 5 dígitos tais que, abcde / fghij = N
-%	cada digito de 0-9 deve aparecer exatamente uma vez, 2  <= N <= 79
-%Solução: 
-%	testar todos os fghij
-%	abcde = fghij*N
-%	verifica restrição de uso dos digitos
+Encontrar dois números de 5 dígitos tais que, $\textbf{abcde} / \textbf{fghij} = N$.
+Cada digito de 0-9 deve aparecer exatamente uma vez, $2\  \leq\ N\ \leq\ 79$.
+\end{block}
+\pause
+\begin{block}{}
+\begin{itemize}
+	\bitem Testar todos os valores para \textbf{fghij}
+	\bitem $\textbf{abcde} = \textbf{fghij}*N$
+	\bitem Verifica restrição de uso dos dígitos
+\end{itemize}
 \end{block}
 \end{frame}
 
@@ -376,34 +380,40 @@ Colocar o menor número de cavalos em um tabuleiro de xadrez $n\ x \ n$ de modo 
 \begin{frame}
 \frametitle{Complete Search}
 \begin{block}{Superprime Rib [USACO 1994 Final Round, adapted]}
-%
-%A number is called superprime if it is prime and every number obtained by chopping some number of digits from the right side of the decimal expansion is prime. For example, 233 is a superprime, because 233, 23, and 2 are all prime. Print a list of all the superprime numbers of length n, for n <= 9. The number 1 is not a prime.
-%
-%For this problem, use depth first search, since all the answers are going to be at the nth level (the bottom level) of the search.
+Um número $X$ é dito superprimo se $X$ é primo e todo número obtido apagando alguma quantidade de dígitos à direita da representação decimal de $X$ é primo. Por exemplo, 233 é superprimo, já que 233, 23 e 2 são todos primos.
+\begin{itemize}
+	\bitem Imprima uma lista de todos os superprimos de tamanho $n$, ($n \leq 9$). 1 não é primo.
+\end{itemize}
 \end{block}
-\end{frame}
 
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
-\begin{frame}
-\frametitle{Complete Search}
-\begin{block}{Betsy's Tour [USACO 1995 Qualifying Round]}
-%A square township has been partitioned into n 2 square plots. The Farm is located in the upper left plot and the Market is located in the lower left plot. Betsy takes a tour of the township going from Farm to Market by walking through every plot exactly once. Write a program that will count how many unique tours Betsy can take in going from Farm to Market for any value of n <= 6.
-%
-%Since the number of solutions is required, the entire tree must be searched, even if one solution is found quickly. So it doesn't matter from a time perspective whether DFS or BFS is used. Since DFS takes less space, it is the search of choice for this problem.
+\pause
+\begin{block}{}
+\begin{itemize}[<+->]
+	\bitem Construir o número dígito por dígito.
+	\bitem Todas as repostas estão a uma profundidade $n$
+	\bitem Busca em profundidade!
+\end{itemize}
 \end{block}
+
 \end{frame}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
 \begin{block}{UVa 11742 -- Social Constraints}
-%	0 < n <= 8 amigos vão ao cinema
-%	vão se sentar na primeira fileira, com n assentos consecutivos
-%	Existem 0 <= m <= 20 restrições, (a,b,c) indicando que a e b devem estar sentados no máximo a c assentos de distancia
-%	De quantas formas eles podem se sentar?
-%Solução
-%	testar as n! permutações
-%	verifica se a permutação satisfaz todas as restrições
+\begin{itemize}
+	\bitem $0\ <\ n\ \leq\ 8$ amigos vão ao cinema
+	\bitem Vão se sentar na primeira fileira, com n assentos consecutivos
+	\bitem Existem $0\ \leq\ m\ \leq\ 20$ restrições, $(a,b,c)$ indicando que $a$ e $b$ devem estar sentados no máximo a $c$ assentos de distancia
+	\bitem De quantas formas eles podem se sentar?
+\end{itemize}
+\end{block}
+\pause
+\begin{block}{}
+\begin{itemize}
+	\bitem Testar as $n!$ permutações \texttt{\color{ccomments}{/* C++ -- next\_permutation() */}}
+	\bitem Verifica se a permutação satisfaz todas as restrições
+\end{itemize}
 \end{block}
 \end{frame}
 
@@ -411,29 +421,43 @@ Colocar o menor número de cavalos em um tabuleiro de xadrez $n\ x \ n$ de modo 
 \begin{frame}
 \frametitle{Complete Search}
 \begin{block}{UVa 12346 - Water Gate Management}
-%	uma barragem tem 1 <= n <= 20 portões que deixam a água passar quando necessário, cada portão tem uma taxa que determina quanta água ele é capaz de deixar passar por segundo e um custo de abertura.
-%	Sua tarefa é controlar a abertura dos portões de modo que a agua possa fluir a uma taxa de x unidades por segundo e o custo total de abertura seja minimo.
-%Solução
-%	testar todos os 2^n subconjuntos de portões que podem ser abertos
-%	para cada subconjunto
-%		verifica se a taxa passando é maior ou igual a taxa desejada
-%			em caso positivo, verifique se o custo é menor que o menor custo encontrado ate agora
+Uma barragem tem $1\ \leq\ n\ \leq\ 20$ portões que deixam a água passar quando necessário, cada portão tem uma taxa que determina quanta água ele é capaz de deixar passar por segundo e um custo de abertura.
+\begin{itemize}
+	\bitem Sua tarefa é controlar a abertura dos portões de modo que a agua possa fluir a uma taxa de x unidades por segundo e o custo total de abertura seja minimo.
+\end{itemize}
+\end{block}
+\pause
+\begin{block}{}
+\begin{itemize}
+	\bitem Testar todos os $2^n$ subconjuntos de portões que podem ser abertos
+	\bitem Para cada subconjunto:
+	\begin{itemize}
+		\bitem Verifica se a taxa passando é maior ou igual a taxa desejada
+		\bitem em caso positivo, verifique se o custo é menor que o menor custo encontrado ate agora
+	\end{itemize}
+\end{itemize}
 \end{block}
 \end{frame}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SLIDE -
 \begin{frame}
 \frametitle{Complete Search}
+\scriptsize
 \begin{block}{Party Lamps [IOI 98]}
-%You are given N lamps and four switches. The first switch toggles all lamps, the second the even lamps, the third the odd lamps, and last switch toggles lamps 1, 4, 7, 10, ... .
-%
-%Given the number of lamps, N, the number of button presses made (up to 10,000), and the state of some of the lamps (e.g., lamp 7 is off), output all the possible states the lamps could be in.
-%
-%Naively, for each button press, you have to try 4 possibilities, for a total of 410000 (about 106020 ), which means there's no way you could do complete search (this particular algorithm would exploit recursion).
-%
-%Noticing that the order of the button presses does not matter gets this number down to about 100004 (about 1016 ), still too big to completely search (but certainly closer by a factor of over 106000 ).
-%
-%However, pressing a button twice is the same as pressing the button no times, so all you really have to check is pressing each button either 0 or 1 times. That's only 24 = 16 possibilities, surely a number of iterations solvable within the time limit.
+Existem $N$ lâmpadas numeradas de $1$ a $N$ e 4 interruptores. O primeiro interruptor alterna todas as lâmpadas, o segundo as lâmpadas pares, o terceiro as lâmpadas impares,
+e o último as lâmpadas $1,\ 4,\ 7,\ 10,\ ...$
+\begin{itemize}
+	\bitem Dados o número de lâmpadas $N$, o número de vezes que algum interruptor foi pressionado (no máximo 10000), e o estado de algumas lâmpadas (ex., lâmpada 7 está desligada), imprima todas as configurações em que as lâmpadas podem estar.
+\end{itemize}
+\end{block}
+\pause
+\begin{block}{}
+\begin{itemize}
+	\bitem Para cada botão pressionado: 4 possibilidades. $4^{10000}$. \textbf{TLE!}
+	\bitem \texttt{$obs_1$: Ordem que os interruptores são pressionados não importa.}
+	\bitem \texttt{$obs_2$: Pressionar um interruptor 2 vezes é o mesmo que não pressionar nenhuma.}
+	\bitem Só precisamos testar se um botão foi ou não apertado, $2^4 = 16$ possibilidades.
+\end{itemize}
 \end{block}
 \end{frame}
 
@@ -441,9 +465,22 @@ Colocar o menor número de cavalos em um tabuleiro de xadrez $n\ x \ n$ de modo 
 \begin{frame}
 \frametitle{Complete Search}
 \begin{block}{Addition Chains}
-%An addition chain is a sequence of integers such that the first number is 1, and every subsequent number is the sum of some two (not necessarily unique) numbers that appear in the list before it. For example, 1 2 3 5 is such a chain, as 2 is 1+1, 3 is 2+1, and 5 is 2+3. Find the minimum length chain that ends with a given number.
-%
-%Analysis: Depth-first search with iterative deepening works well here, as DFS has a tendency to first try 1 2 3 4 5 ... n, which is really bad and the queue grows too large very quickly for BFS.
+Uma ``cadeia de adição'' é uma sequência de inteiros tal que o primeiro número é 1, e todo número subsequente é a soma de dois termos que aparecem na sequência antes dele.
+
+Por exemplo, 1 2 3 4 é uma cadeia de adição uma vez que, $2\ =\ 1+1$, $3\ =\ 2+1$ e $5\ =\ 2+3$.
+\begin{itemize}
+	\bitem Encontre o tamanho da menor cadeia que termina com um dado número.
+\end{itemize}
+\end{block}
+\pause
+\begin{block}{}
+\begin{itemize}
+	\bitem Busca em aprofundamento iterativo é uma boa alternativa:
+	\begin{itemize}
+		\bitem A tendência é que a busca em profundidade gere primeiro soluções do tipo \textbf{1 2 3 4 5 ... n}
+		\bitem A fila na busca em largura cresce muito rapidamente.
+	\end{itemize}
+\end{itemize}
 \end{block}
 \end{frame}
 

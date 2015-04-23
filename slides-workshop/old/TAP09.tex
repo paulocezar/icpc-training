@@ -1,0 +1,106 @@
+%========================================================= HANDOUT OPTIONS =
+% \documentclass[xcolor=dvipsnames,envcountsect,handout]{beamer}
+%
+% \mode<handout>
+% % \mode<handout>{\beamertemplatesolidbackgroundcolor{black!2}}
+% {
+%  \usefonttheme{professionalfonts}
+%  \setbeamertemplate{theorems}[numbered]
+%  \setbeamertemplate{footline}{INF-UFG -- Tópicos Avançados de Programação \hfill\insertpagenumber\ --\ \insertpresentationendpage}
+% }
+%===========================================================================
+
+%==================================================== PRESENTATION OPTIONS =
+ \documentclass{beamer}
+
+ \mode<presentation>
+ {
+   \usetheme[left]{Marburg}
+   \usetheme{PaloAlto}
+
+   \usefonttheme{serif}
+ }
+
+ \hypersetup{pdfpagemode=FullScreen}
+%===========================================================================
+
+%---------------------------------------------------------------- PACKAGES -
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+
+%------------------------------------------------------------------- COVER -
+\title[\bf Instituto\\ de\\ Informática\\ \large{UFG}]{{\bf\huge Maratona de Programação}}
+\date{{\bf Instituto de Informática}\\ Universidade Federal de Goiás\\ \small{\url{ http://www.inf.ufg.br}}}
+%\author[]{Cláudio Meneses {\Large\&} Humberto Longo}
+\author[]{Humberto Longo}
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+   \frametitle{}
+   \begin{center}
+    \begin{minipage}{.7\textwidth}
+     \begin{block}{}
+      \centering
+      \huge
+      \tt
+      {\usebeamercolor[bg]{block title} \insertsection}
+     \end{block}
+    \end{minipage}
+   \end{center}
+  \end{frame}
+}
+
+
+%-------------------------------------------------------------------- FILES -
+\includeonly
+{
+ TAP09-competicao,
+ TAP09-olimpiada,
+ TAP09-maratona,
+ TAP09-preparacao,
+ TAP09-topcoder,
+ TAP09-tap,
+}
+
+%-------------------------------------------------------------------- TITLE -
+\begin{document}
+
+\begin{frame}
+ \begin{block}{}
+  \titlepage
+ \end{block}
+\end{frame}
+
+%================================================================== SECTION -
+\section{Introdução}
+ \include{TAP09-competicao}
+
+\section{Olimpíada}
+ \include{TAP09-olimpiada}
+
+\section{Maratona}
+ \include{TAP09-maratona}
+
+\section{Preparação}
+ \include{TAP09-preparacao}
+
+\section{\em Top Coder}
+ \include{TAP09-topcoder}
+
+\section{TAP}
+ \include{TAP09-tap}
+%================================================================== SECTION -
+
+\begin{frame}
+ \begin{block}{}
+  \titlepage
+ \end{block}
+\end{frame}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  SLIDE -
+\end{document}
+
+
+

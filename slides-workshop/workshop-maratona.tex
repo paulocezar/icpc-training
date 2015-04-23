@@ -1,0 +1,84 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+%------------------------------------------------------------------- PACKAGES -
+\usepackage[brazil]{babel}     %permite acentuação automática para o Portugues do Brasil,
+\usepackage[T1]{fontenc}       %permite a hifenização correta em Portugues
+\usepackage[utf8]{inputenc} %permite a inserção de acentos (Windows)
+\usepackage{colortbl}
+%\usepackage{amsfonts}
+%\usepackage{graphicx}
+%\usepackage{rotating}
+
+%\usepackage{float}
+%\usepackage{fancyvrb}
+
+%---------------------------------------------------------------- DEFINITIONS -
+%
+%\def\dis{\displaystyle}
+%\def\ol{\overline}
+%\newcommand{\ang}[1]{\left\langle #1 \right\rangle}
+%\newcommand{\transp}[2]{\input{#1#2}}
+%
+%\FontTitle{\large}{BW}
+%FontTitle{\large}
+%\hypersetup{pdfpagemode=FullScreen}
+
+
+%---------------------------------------------------------------------- COVER -
+\title[]{Competições de Programação, por que você ainda não está participando?}
+\author[{\tiny Paulo Cezar}]{Paulo Cezar Pereira Costa}
+\institute[{\tiny INF/UFG}]{Instituto de Informática\\
+           Universidade Federal de Goiás}
+%\date[]{}
+
+%\title{Maratona de Programação}
+%%\subtitle{\normalsize Instituto de Informática -- UFG}
+%\author{Humberto Longo}
+%% \email{longo@inf.ufg.br}
+%% \institution{Instituto de Informática \\ Universidade Federal de Goiás}%
+%% \slideCaption{Maratona de Programação}
+
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\frametitle{}
+\begin{center}
+	\begin{minipage}{.7\textwidth}
+	\begin{block}{}
+		\centering
+		\huge
+		\tt
+		{\usebeamercolor[bg]{block title} \insertsection}
+	\end{block}
+	\end{minipage}
+\end{center}
+\end{frame}
+}
+
+\includeonly
+{
+competicoes,
+maratona,
+preparacao,
+}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+\include{competicoes}
+
+\section{Maratona de Programação}
+\include{maratona}
+
+\section{Como se preparar}
+\include{preparacao}
+
+\section{Dúvidas?}
+
+\end{document}
+
